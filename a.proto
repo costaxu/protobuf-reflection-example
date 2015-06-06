@@ -1,0 +1,22 @@
+package test;
+message Role
+{
+	optional int64 exp = 1;
+	required int32 level = 2;
+	required string role_name  = 3;
+}
+
+message Goal
+{
+	optional int32 minute = 1;
+	optional string shooter = 2;
+}
+
+message Hello
+{
+	optional int32 fool = 1;
+	optional string bar = 2;
+	repeated string names = 3;
+	optional Role role = 4;
+	repeated Goal goals = 5;
+}
