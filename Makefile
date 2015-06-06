@@ -1,9 +1,7 @@
 cc=g++
 include=-I /usr/local/include
 lib=-L/usr/local/lib/ -lprotobuf
-objects=$(patsubst %.cc,%.o,$(wildcard *.cc))
 objects=a.pb.o reflection.o
-
 deps=$(patsubst %.o,%.d,$(objects))
 pb_files=$(patsubst %.proto,%.pb.cc,$(wildcard *.proto))
 
@@ -19,10 +17,10 @@ $(bin): $(objects)
 $(pb_files): %.pb.cc: %.proto	
 	protoc --cpp_out=./ $<
 
-$(objects):%.o: %.cc %.d
+%.o: %.cc %.d
 	$(cc) -c  $(include) $< -o $@
 
-$(deps):%.d: %.cc
+%.d: %.cc
 	$(cc) -MM $(include) $< -o$@ 
 			 
 reflection.d:$(pb_files)

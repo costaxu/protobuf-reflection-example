@@ -12,6 +12,7 @@ message Goal
 	optional string shooter = 2;
 }
 
+
 message Hello
 {
 	optional int32 fool = 1;
