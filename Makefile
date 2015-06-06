@@ -24,6 +24,9 @@ $(objects):%.o: %.cc %.d
 
 $(deps):%.d: %.cc
 	$(cc) -MM $(include) $< -o$@ 
+			 
+reflection.d:$(pb_files)
+
 clean:
 	-rm *.pb.*
 	-rm *.o
